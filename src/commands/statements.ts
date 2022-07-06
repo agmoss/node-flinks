@@ -11,6 +11,7 @@ import {
   StatementsResponse
 } from '../types';
 import { transformOptions, transformResponse } from '../lib/transform-keys';
+import { addBearerTokenHeader } from '../lib/headers';
 
 interface FlinksGetStatementsOptions {
   requestId: string;
@@ -22,10 +23,12 @@ export interface GetStatementsOptions {
   requestId: string;
   numberOfStatements?: string;
   accountsFilter?: string[];
+  accessToken?: string;
 }
 
 export interface GetStatementsAsyncOptions {
   requestId: string;
+  accessToken?: string;
 }
 
 export interface FlinksGetStatementsResponse extends FlinksResponseBase {
@@ -81,10 +84,12 @@ const getStatements = async (
     ...options
   });
 
+  const flinksClient = addBearerTokenHeader(client, options.accessToken);
+
   debug('request options', requestOptions);
 
   try {
-    const response = await client.post<FlinksGetStatementsResponse | FlinksGetStatementsAsyncResponse>(
+    const response = await flinksClient.post<FlinksGetStatementsResponse | FlinksGetStatementsAsyncResponse>(
       `BankingServices/GetStatements`,
       {
         json: {
@@ -122,8 +127,10 @@ const getStatementsAsync = async (
   client: Got,
   options: GetStatementsAsyncOptions
 ): Promise<GetStatementsResponse | GetStatementsAsyncResponse> => {
+  const flinksClient = addBearerTokenHeader(client, options.accessToken);
+
   try {
-    const response = await client.post<FlinksGetStatementsResponse | FlinksGetStatementsAsyncResponse>(
+    const response = await flinksClient.post<FlinksGetStatementsResponse | FlinksGetStatementsAsyncResponse>(
       `BankingServices/GetStatementsAsync/${options.requestId}`,
       {
         responseType: 'json'

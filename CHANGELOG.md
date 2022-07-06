@@ -1,5 +1,9 @@
 # Node Flinks Changelog
 
+## 0.3.0 (July 28, 2022)
+
+- Add `token` command
+
 ## 0.2.0 (November 2, 2020)
 
 - Throw `FlinksError` when receiving an error response

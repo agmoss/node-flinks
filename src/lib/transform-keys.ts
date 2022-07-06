@@ -1,4 +1,5 @@
 import camelcaseKeys from 'camelcase-keys';
+import snakecaseKeys from 'snakecase-keys';
 
 const transformOptions = <T, U>(options: T): U | undefined => {
   if (options) {
@@ -14,4 +15,12 @@ const transformResponse = <T, U>(response: T): U => {
   return (output as unknown) as U;
 };
 
-export { transformOptions, transformResponse };
+const transformToSnakeCase = <T, U>(options: T): U | undefined => {
+  if (options) {
+    const output = snakecaseKeys(options, { deep: true });
+
+    return (output as unknown) as U;
+  }
+};
+
+export { transformOptions, transformResponse, transformToSnakeCase };

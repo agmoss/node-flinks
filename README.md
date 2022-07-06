@@ -15,15 +15,23 @@ A Flinks API wrapper for Node.js
 ```ts
 import FlinksClient from 'node-flinks';
 
-const flinks = new FlinksClient({
+const flinks = new FlinksClient(
   instanceName: 'toolbox', // Flinks sandbox instance
   clientId: '43387ca6-0391-4c82-857d-70d95f087ecb' // Flinks sandbox clientId
-});
+);
+```
+
+### Creating a token
+
+When using OAuth with Flinks you must first make a `token` request where you exchange a `clientId`, and `secret` for a response that contains an `accessToken`.
+
+```ts
+const flinksTokenResponse = await flinks.token( clientId: '<your clientId>', secret: '<your secret>');
 ```
 
 ### Making an authorize request
 
-Before you can make any requests to the Flinks API you must first make an `authorize` request where you exchange a `loginId` for a `requestId`.
+After creating a token or if not using OAuth you need make an `authorize` request where you exchange a `loginId` for a `requestId`.
 
 ```ts
 const requestId = await flinks.authorize({ loginId: '<your loginId>' });
@@ -66,6 +74,7 @@ Here is a list of all the Flinks API endpoints along with the corresponding libr
 | `/GetUserAnalysisAttributes` | Not implemented           | [Docs](https://docs.flinks.io/reference/attributes#getuseranalysisattributes)                 |
 | `/Investments`               | Not implemented           | [Docs](https://docs.flinks.io/reference/investments#investments-1)                            |
 | `/SetScheduledRefresh`       | Not implemented           | [Docs](https://docs.flinks.io/reference/accounts-information#setscheduledrefresh)             |
+| `/Token`                     | `token`                   | [Docs](https://oauthdocs.flinks.com/reference/token)                                          |
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 {
   "name": "node-flinks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Flinks API wrapper for Node.js",
   "author": "Neo Financial Engineering <engineering@neofinancial.com>",
   "main": "build/index.js",
@@ -44,6 +44,7 @@
   ],
   "dependencies": {
     "camelcase-keys": "^6.2.2",
+    "snakecase-keys": "^5.4.2",
     "debug": "^4.2.0",
     "got": "^11.7.0"
   },
@@ -60,6 +61,6 @@
     "prettier": "^1.19.1",
     "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.7.4"
   }
 }

@@ -25,6 +25,7 @@ import {
   GetStatementsAsyncOptions,
   GetStatementsAsyncResponse
 } from './commands/statements';
+import { token, TokenOptions, TokenResponse } from './commands/token';
 
 class FlinksClient {
   private client: Got;
@@ -33,6 +34,10 @@ class FlinksClient {
     this.client = got.extend({
       prefixUrl: `https://${instanceName}-api.private.fin.ag/v3/${customerId}`
     });
+  }
+
+  public token(options: TokenOptions, testing: boolean): Promise<TokenResponse> {
+    return token(this.client, options, testing);
   }
 
   public authorize(options: AuthorizeOptions): Promise<AuthorizeResponse> {
