@@ -8,7 +8,7 @@ A Flinks API wrapper for Node.js
 
 ### Installation
 
-`yarn add node-flinks`
+`npm install node-flinks`
 
 ### Creating a client
 
@@ -78,22 +78,23 @@ Here is a list of all the Flinks API endpoints along with the corresponding libr
 
 ## Contributing
 
-### Development
+## Development
 
 1. Clone this repo
-1. `yarn`
-1. Build package with `yarn build` or turn on watch mode with `yarn watch`
-1. Run client tests against Flinks API with `yarn test:client`
+2. `npm install`
+3. `npm link`
+4. In the package you want to test in run `npm link node-flinks`
+5. Build package with `npm run build` or turn on watch mode with `npm run watch`
 
 ### Testing
 
-#### `yarn test`
+#### `npm test`
 
 ### Building
 
-#### `yarn build`
+#### `npm run build`
 
-If you need to clear the build cache run `yarn clean`
+If you need to clear the build cache run `npm run clean`
 
 ## Publishing
 

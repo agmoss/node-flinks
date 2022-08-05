@@ -1,6 +1,10 @@
 # Node Flinks Changelog
 
-## 0.3.0 (July 28, 2022)
+## 0.4.0 (August 4, 2022)
+
+- Start using `npm` instead of `yarn`
+
+## 0.3.0 (July 28 4, 2022)
 
 - Add `token` command
 
