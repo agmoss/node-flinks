@@ -6,6 +6,7 @@ import { Got } from 'got';
 import FlinksError from '../lib/flinks-error';
 import { FlinksLoginResponse, LoginResponse, FlinksResponseBase, ResponseBase } from '../types';
 import { transformOptions, transformResponse } from '../lib/transform-keys';
+import { addBearerTokenHeader } from '../lib/headers';
 
 interface FlinksAuthorizeOptions {
   Institution?: string;
@@ -27,6 +28,7 @@ export interface AuthorizeOptions {
   loginId: string;
   securityResponses?: Record<string, any>;
   tag?: string;
+  accessToken?: string;
 }
 
 export interface FlinksAuthorizeResponse extends FlinksResponseBase {
@@ -43,20 +45,22 @@ const debug = createDebug('node-flinks:commands:authorize');
 
 const defaultOptions = {
   mostRecentCached: true,
-  save: false
+  save: false,
 };
 
 const authorize = async (client: Got, options: AuthorizeOptions): Promise<AuthorizeResponse> => {
+  const flinksClient = addBearerTokenHeader(client, options.accessToken);
+
   const requestOptions = transformOptions<AuthorizeOptions, FlinksAuthorizeOptions>({ ...defaultOptions, ...options });
 
   debug('request options', requestOptions);
 
   try {
-    const response = await client.post<FlinksAuthorizeResponse>(`BankingServices/Authorize`, {
+    const response = await flinksClient.post<FlinksAuthorizeResponse>(`BankingServices/Authorize`, {
       json: {
-        ...requestOptions
+        ...requestOptions,
       },
-      responseType: 'json'
+      responseType: 'json',
     });
 
     debug('flinks authorize response', response.body);

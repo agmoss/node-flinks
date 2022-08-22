@@ -18,19 +18,19 @@ const flinksResponse = {
       Balance: {
         Available: 6.04,
         Current: 49993.96,
-        Limit: 5000
-      }
-    }
+        Limit: 5000,
+      },
+    },
   ],
   Login: {
     Username: 'Greatday',
     IsScheduledRefresh: false,
     LastRefresh: '2019-05-09T13:47:46.5227901',
     Type: 'Personal',
-    Id: '5e115eac-1209-4f19-641c-08d6d484e2fe'
+    Id: '5e115eac-1209-4f19-641c-08d6d484e2fe',
   },
   Institution: 'FlinksCapital',
-  RequestId: '1243c283-e0ca-4fda-a5e4-343068430190'
+  RequestId: '1243c283-e0ca-4fda-a5e4-343068430190',
 };
 
 describe('isMessageValid', () => {

@@ -1,12 +1,9 @@
 {
+  "extends": "@tsconfig/node14",
   "compilerOptions": {
     "strict": true,
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
     "outDir": "build",

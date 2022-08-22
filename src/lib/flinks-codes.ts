@@ -32,7 +32,7 @@ const flinksCodes: FlinksCodes = {
   DISABLED_INSTITUTION: 'The selected financial institution is not available',
   AGGREGATION_ERROR: 'Flinks had an unexpected error and could not process your request',
   METHOD_NOT_AVAILABLE:
-    'The requested API is not currenly enabled in your instance. Kindly contact us if you wish to use this feature.'
+    'The requested API is not currenly enabled in your instance. Kindly contact us if you wish to use this feature.',
 };
 
 export { flinksCodes };

@@ -1,5 +1,17 @@
 # Node Flinks Changelog
 
+## 0.5.0 (August 22, 2022)
+
+- Update dependencies
+
+## 0.4.0 (August 4, 2022)
+
+- Start using `npm` instead of `yarn`
+
+## 0.3.0 (July 28 4, 2022)
+
+- Add `token` command
+
 ## 0.2.0 (November 2, 2020)
 
 - Throw `FlinksError` when receiving an error response

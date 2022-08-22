@@ -7,7 +7,7 @@ import {
   GetAccountsDetailResponse,
   getAccountsDetailAsync,
   GetAccountsDetailAsyncResponse,
-  GetAccountsDetailAsyncOptions
+  GetAccountsDetailAsyncOptions,
 } from './commands/accounts-detail';
 import {
   getAccountsSummary,
@@ -15,7 +15,7 @@ import {
   GetAccountsSummaryResponse,
   getAccountsSummaryAsync,
   GetAccountsSummaryAsyncOptions,
-  GetAccountsSummaryAsyncResponse
+  GetAccountsSummaryAsyncResponse,
 } from './commands/accounts-summary';
 import {
   getStatements,
@@ -23,16 +23,21 @@ import {
   GetStatementsResponse,
   getStatementsAsync,
   GetStatementsAsyncOptions,
-  GetStatementsAsyncResponse
+  GetStatementsAsyncResponse,
 } from './commands/statements';
+import { token, TokenOptions, TokenResponse } from './commands/token';
 
 class FlinksClient {
   private client: Got;
 
   public constructor(instanceName: string, customerId: string) {
     this.client = got.extend({
-      prefixUrl: `https://${instanceName}-api.private.fin.ag/v3/${customerId}`
+      prefixUrl: `https://${instanceName}-api.private.fin.ag/v3/${customerId}`,
     });
+  }
+
+  public token(options: TokenOptions, testing: boolean): Promise<TokenResponse> {
+    return token(this.client, options, testing);
   }
 
   public authorize(options: AuthorizeOptions): Promise<AuthorizeResponse> {

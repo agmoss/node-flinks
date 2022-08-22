@@ -8,7 +8,7 @@ export {
   FlinksGetAccountsDetailResponse,
   FlinksGetAccountsDetailAsyncResponse,
   GetAccountsDetailResponse,
-  GetAccountsDetailAsyncResponse
+  GetAccountsDetailAsyncResponse,
 } from './commands/accounts-detail';
 
 export {
@@ -17,7 +17,7 @@ export {
   FlinksGetAccountsSummaryResponse,
   FlinksGetAccountsSummaryAsyncResponse,
   GetAccountsSummaryResponse,
-  GetAccountsSummaryAsyncResponse
+  GetAccountsSummaryAsyncResponse,
 } from './commands/accounts-summary';
 
 export {
@@ -26,7 +26,7 @@ export {
   FlinksGetStatementsResponse,
   FlinksGetStatementsAsyncResponse,
   GetStatementsResponse,
-  GetStatementsAsyncResponse
+  GetStatementsAsyncResponse,
 } from './commands/statements';
 
 export * from './lib/authenticity';

@@ -8,22 +8,30 @@ A Flinks API wrapper for Node.js
 
 ### Installation
 
-`yarn add node-flinks`
+`npm install node-flinks`
 
 ### Creating a client
 
 ```ts
 import FlinksClient from 'node-flinks';
 
-const flinks = new FlinksClient({
-  instanceName: 'toolbox', // Flinks sandbox instance
-  clientId: '43387ca6-0391-4c82-857d-70d95f087ecb' // Flinks sandbox clientId
-});
+const instanceName = 'toolbox'; // Flinks sandbox instance
+const clientId = '43387ca6-0391-4c82-857d-70d95f087ecb'; // Flinks sandbox clientId
+
+const flinks = new FlinksClient(instanceName, clientId);
+```
+
+### Creating a token
+
+When using OAuth with Flinks you must first make a `token` request where you exchange a `clientId`, and `secret` for a response that contains an `accessToken`.
+
+```ts
+const flinksTokenResponse = await flinks.token( clientId: '<your clientId>', secret: '<your secret>');
 ```
 
 ### Making an authorize request
 
-Before you can make any requests to the Flinks API you must first make an `authorize` request where you exchange a `loginId` for a `requestId`.
+After creating a token or if not using OAuth you need make an `authorize` request where you exchange a `loginId` for a `requestId`.
 
 ```ts
 const requestId = await flinks.authorize({ loginId: '<your loginId>' });
@@ -66,25 +74,27 @@ Here is a list of all the Flinks API endpoints along with the corresponding libr
 | `/GetUserAnalysisAttributes` | Not implemented           | [Docs](https://docs.flinks.io/reference/attributes#getuseranalysisattributes)                 |
 | `/Investments`               | Not implemented           | [Docs](https://docs.flinks.io/reference/investments#investments-1)                            |
 | `/SetScheduledRefresh`       | Not implemented           | [Docs](https://docs.flinks.io/reference/accounts-information#setscheduledrefresh)             |
+| `/Token`                     | `token`                   | [Docs](https://oauthdocs.flinks.com/reference/token)                                          |
 
 ## Contributing
 
-### Development
+## Development
 
 1. Clone this repo
-1. `yarn`
-1. Build package with `yarn build` or turn on watch mode with `yarn watch`
-1. Run client tests against Flinks API with `yarn test:client`
+2. `npm install`
+3. `npm link`
+4. In the package you want to test in run `npm link node-flinks`
+5. Build package with `npm run build` or turn on watch mode with `npm run watch`
 
 ### Testing
 
-#### `yarn test`
+#### `npm test`
 
 ### Building
 
-#### `yarn build`
+#### `npm run build`
 
-If you need to clear the build cache run `yarn clean`
+If you need to clear the build cache run `npm run clean`
 
 ## Publishing
 

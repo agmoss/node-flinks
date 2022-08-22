@@ -8,9 +8,10 @@ import {
   FlinksLoginResponse,
   ResponseBase,
   AccountResponse,
-  LoginResponse
+  LoginResponse,
 } from '../types';
 import { transformOptions, transformResponse } from '../lib/transform-keys';
+import { addBearerTokenHeader } from '../lib/headers';
 
 interface FlinksGetAccountsDetailOptions {
   requestId: string;
@@ -32,10 +33,12 @@ export interface GetAccountsDetailOptions {
   withBalance?: boolean;
   accountsFilter?: string[];
   daysOfTransactions?: string;
+  accessToken?: string;
 }
 
 export interface GetAccountsDetailAsyncOptions {
   requestId: string;
+  accessToken?: string;
 }
 
 export interface FlinksGetAccountsDetailResponse extends FlinksResponseBase {
@@ -67,7 +70,7 @@ export interface GetAccountsDetailAsyncResponse extends ResponseBase {
 const debug = createDebug('node-flinks:commands:accounts');
 
 const defaultOptions = {
-  mostRecentCached: true
+  mostRecentCached: true,
 };
 
 const isResponse = (
@@ -88,19 +91,21 @@ const getAccountsDetail = async (
 ): Promise<GetAccountsDetailResponse | GetAccountsDetailAsyncResponse> => {
   const requestOptions = transformOptions<GetAccountsDetailOptions, FlinksGetAccountsDetailOptions>({
     ...defaultOptions,
-    ...options
+    ...options,
   });
+
+  const flinksClient = addBearerTokenHeader(client, options.accessToken);
 
   debug('request options', requestOptions);
 
   try {
-    const response = await client.post<FlinksGetAccountsDetailResponse | FlinksGetAccountsDetailAsyncResponse>(
+    const response = await flinksClient.post<FlinksGetAccountsDetailResponse | FlinksGetAccountsDetailAsyncResponse>(
       `BankingServices/GetAccountsDetail`,
       {
         json: {
-          ...requestOptions
+          ...requestOptions,
         },
-        responseType: 'json'
+        responseType: 'json',
       }
     );
 
@@ -132,11 +137,13 @@ const getAccountsDetailAsync = async (
   client: Got,
   options: GetAccountsDetailAsyncOptions
 ): Promise<GetAccountsDetailResponse | GetAccountsDetailAsyncResponse> => {
+  const flinksClient = addBearerTokenHeader(client, options.accessToken);
+
   try {
-    const response = await client.post<FlinksGetAccountsDetailResponse | FlinksGetAccountsDetailAsyncResponse>(
+    const response = await flinksClient.post<FlinksGetAccountsDetailResponse | FlinksGetAccountsDetailAsyncResponse>(
       `BankingServices/GetAccountsDetailAsync/${options.requestId}`,
       {
-        responseType: 'json'
+        responseType: 'json',
       }
     );
 
