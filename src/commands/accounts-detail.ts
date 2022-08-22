@@ -8,7 +8,7 @@ import {
   FlinksLoginResponse,
   ResponseBase,
   AccountResponse,
-  LoginResponse
+  LoginResponse,
 } from '../types';
 import { transformOptions, transformResponse } from '../lib/transform-keys';
 import { addBearerTokenHeader } from '../lib/headers';
@@ -70,7 +70,7 @@ export interface GetAccountsDetailAsyncResponse extends ResponseBase {
 const debug = createDebug('node-flinks:commands:accounts');
 
 const defaultOptions = {
-  mostRecentCached: true
+  mostRecentCached: true,
 };
 
 const isResponse = (
@@ -91,7 +91,7 @@ const getAccountsDetail = async (
 ): Promise<GetAccountsDetailResponse | GetAccountsDetailAsyncResponse> => {
   const requestOptions = transformOptions<GetAccountsDetailOptions, FlinksGetAccountsDetailOptions>({
     ...defaultOptions,
-    ...options
+    ...options,
   });
 
   const flinksClient = addBearerTokenHeader(client, options.accessToken);
@@ -103,9 +103,9 @@ const getAccountsDetail = async (
       `BankingServices/GetAccountsDetail`,
       {
         json: {
-          ...requestOptions
+          ...requestOptions,
         },
-        responseType: 'json'
+        responseType: 'json',
       }
     );
 
@@ -143,7 +143,7 @@ const getAccountsDetailAsync = async (
     const response = await flinksClient.post<FlinksGetAccountsDetailResponse | FlinksGetAccountsDetailAsyncResponse>(
       `BankingServices/GetAccountsDetailAsync/${options.requestId}`,
       {
-        responseType: 'json'
+        responseType: 'json',
       }
     );
 

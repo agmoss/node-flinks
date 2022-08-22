@@ -15,10 +15,10 @@ A Flinks API wrapper for Node.js
 ```ts
 import FlinksClient from 'node-flinks';
 
-const flinks = new FlinksClient(
-  instanceName: 'toolbox', // Flinks sandbox instance
-  clientId: '43387ca6-0391-4c82-857d-70d95f087ecb' // Flinks sandbox clientId
-);
+const instanceName = 'toolbox'; // Flinks sandbox instance
+const clientId = '43387ca6-0391-4c82-857d-70d95f087ecb'; // Flinks sandbox clientId
+
+const flinks = new FlinksClient(instanceName, clientId);
 ```
 
 ### Creating a token

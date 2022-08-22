@@ -1,5 +1,9 @@
 # Node Flinks Changelog
 
+## 0.5.0 (August 22, 2022)
+
+- Update dependencies
+
 ## 0.4.0 (August 4, 2022)
 
 - Start using `npm` instead of `yarn`

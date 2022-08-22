@@ -45,7 +45,7 @@ const debug = createDebug('node-flinks:commands:authorize');
 
 const defaultOptions = {
   mostRecentCached: true,
-  save: false
+  save: false,
 };
 
 const authorize = async (client: Got, options: AuthorizeOptions): Promise<AuthorizeResponse> => {
@@ -58,9 +58,9 @@ const authorize = async (client: Got, options: AuthorizeOptions): Promise<Author
   try {
     const response = await flinksClient.post<FlinksAuthorizeResponse>(`BankingServices/Authorize`, {
       json: {
-        ...requestOptions
+        ...requestOptions,
       },
-      responseType: 'json'
+      responseType: 'json',
     });
 
     debug('flinks authorize response', response.body);

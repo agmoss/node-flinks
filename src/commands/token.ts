@@ -46,9 +46,9 @@ const token = async (client: Got, options: TokenOptions, testing = false): Promi
 
     const response = await client.post<FlinksTokenResponse>(url, {
       json: {
-        ...requestOptions
+        ...requestOptions,
       },
-      responseType: 'json'
+      responseType: 'json',
     });
 
     debug('flinks token response', response.body);
