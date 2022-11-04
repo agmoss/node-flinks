@@ -1,34 +1,16 @@
 import FlinksClient from './client';
 
-export { AuthorizeOptions, FlinksAuthorizeResponse, AuthorizeResponse } from './commands/authorize';
-
 export {
-  GetAccountsDetailOptions,
-  GetAccountsDetailAsyncOptions,
-  FlinksGetAccountsDetailResponse,
-  FlinksGetAccountsDetailAsyncResponse,
-  GetAccountsDetailResponse,
-  GetAccountsDetailAsyncResponse,
+  FlinksGetAccountsDetailAsyncResponse, FlinksGetAccountsDetailResponse, GetAccountsDetailAsyncOptions, GetAccountsDetailAsyncResponse, GetAccountsDetailOptions, GetAccountsDetailResponse
 } from './commands/accounts-detail';
-
 export {
-  GetAccountsSummaryOptions,
-  GetAccountsSummaryAsyncOptions,
-  FlinksGetAccountsSummaryResponse,
-  FlinksGetAccountsSummaryAsyncResponse,
-  GetAccountsSummaryResponse,
-  GetAccountsSummaryAsyncResponse,
+  FlinksGetAccountsSummaryAsyncResponse, FlinksGetAccountsSummaryResponse, GetAccountsSummaryAsyncOptions, GetAccountsSummaryAsyncResponse, GetAccountsSummaryOptions, GetAccountsSummaryResponse
 } from './commands/accounts-summary';
-
+export { AuthorizeOptions, AuthorizeResponse, FlinksAuthorizeResponse } from './commands/authorize';
 export {
-  GetStatementsOptions,
-  GetStatementsAsyncOptions,
-  FlinksGetStatementsResponse,
-  FlinksGetStatementsAsyncResponse,
-  GetStatementsResponse,
-  GetStatementsAsyncResponse,
+  FlinksGetStatementsAsyncResponse, FlinksGetStatementsResponse, GetStatementsAsyncOptions, GetStatementsAsyncResponse, GetStatementsOptions, GetStatementsResponse
 } from './commands/statements';
-
 export * from './lib/authenticity';
+export { FlinksErrorResponse } from './lib/flinks-error';
 
 export default FlinksClient;
