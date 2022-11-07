@@ -2,7 +2,7 @@
 
 ## 0.5.1 (November 4, 2022)
 
-- Expose `FlinksErrorFlinksErrorResponse`
+- Expose `FlinksErrorResponse`
 
 ## 0.5.0 (August 22, 2022)
 
