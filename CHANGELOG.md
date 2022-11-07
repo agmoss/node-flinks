@@ -1,5 +1,9 @@
 # Node Flinks Changelog
 
+## 0.5.1 (November 4, 2022)
+
+- Expose `FlinksErrorResponse`
+
 ## 0.5.0 (August 22, 2022)
 
 - Update dependencies
